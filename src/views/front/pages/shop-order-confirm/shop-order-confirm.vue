@@ -3,14 +3,13 @@
 		<form>
 			<view v-if="seat!=1" @tap="onAddressTap" class="cu-form-group">
 				<view class="title">地址</view>
-				<view>
-					<view>
-						{{address.name}} {{address.phone}}
-					</view>
-					<view>
-						{{address.address}}
-					</view>
-				</view>
+				  <view v-if="address.name || address.phone || address.address">
+					<view>{{address.name}} {{address.phone}}</view>
+					<view>{{address.address}}</view>
+				  </view>
+				  <view v-else>
+					暂无地址信息
+				  </view>
 			</view>
 			<view class="cu-form-group">
 				<view class="title">购买清单</view>

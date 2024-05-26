@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg)","display":"flex","width":"100%","backgroundSize":"100% 100%","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'>
-      <el-form :style='{"border":"1px solid #f6f6f6","minHeight":"600px","padding":"30px 45% 20px 5%","margin":"50px auto 50px","borderRadius":"8px","textAlign":"center","flexWrap":"wrap","background":"url(http://codegen.caihongy.cn/20230929/b96e0afa9486481d971edb8e706fdbe8.jpg) no-repeat right center / 50% 100%,#fff","display":"flex","width":"80%","fontSize":"14px","height":"auto"}'>
+    <div class="container">
+    <!-- <div class="container" :style='{"minHeight":"100vh","alignItems":"center","background":"url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg)","display":"flex","width":"100%","backgroundSize":"100% 100%","backgroundPosition":"center center","backgroundRepeat":"no-repeat","justifyContent":"center"}'> -->
+      <el-form>
+      <!-- <el-form :style='{"border":"1px solid #f6f6f6","minHeight":"600px","padding":"30px 45% 20px 5%","margin":"50px auto 50px","borderRadius":"8px","textAlign":"center","flexWrap":"wrap","background":"url(http://codegen.caihongy.cn/20230929/b96e0afa9486481d971edb8e706fdbe8.jpg) no-repeat right center / 50% 100%,#fff","display":"flex","width":"80%","fontSize":"14px","height":"auto"}'> -->
         <div v-if="true" :style='{"padding":"0px","margin":"0px auto 10px","borderColor":"#ddd","color":"#1e3c4f","textAlign":"center","display":"inline-block","background":"none","borderWidth":"0px","width":"100%","lineHeight":"40px","fontSize":"24px","borderStyle":"solid","fontWeight":"600"}' class="title-container">餐厅点餐系统登录</div>
         <div v-if="loginType==1" class="list-item" :style='{"width":"100%","margin":"0 auto 20px","position":"relative","alignItems":"center","flexWrap":"wrap","display":"flex"}'>
           <div v-if="true" class="lable" :style='{"width":"100%","lineHeight":"44px","fontSize":"inherit","color":"#666","textAlign":"left"}'>用户名：</div>
@@ -128,8 +130,27 @@ export default {
   background-position: center center;
   background-size: cover;
   // background: url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg);
-  background: url('/src/views/admin1/src/assets/img/login-bg.png');
-        
+  background: url(https://images.unsplash.com/photo-1679232329246-69b0944201bf?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+	display: flex;
+	width: 100%;
+	align-items: center;
+  background-size: 100% 100%;
+	background-repeat: no-repeat;
+	justify-content: center;
+	.el-form {
+		border: 1px solid #f6f6f6;
+		min-height: 600px;
+		padding: 30px 45% 20px 5%;
+		margin: 50px auto 50px;
+		border-radius: 8px;
+		text-align: center;
+		flex-wrap: wrap;
+		background: #fff url(https://images.unsplash.com/photo-1679232329243-b85bea0978de?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat right center / 50% 100%;
+		display: flex;
+		width: 80%;
+		font-size: 14px;
+		height: auto;
+	}
   .list-item /deep/ .el-input .el-input__inner {
 		border: 2px solid #002052;
 		border-radius: 0px;
@@ -142,7 +163,7 @@ export default {
 		font-size: inherit;
 		outline-offset: 0px;
 		height: 50px;
-	  }
+	}
   
   .list-item.select /deep/ .el-select .el-input__inner {
 		border: 1px solid #eee;
@@ -152,10 +173,10 @@ export default {
 		width: 276px;
 		font-size: 14px;
 		height: 40px;
-	  }
+	}	
   
   .list-code /deep/ .el-input .el-input__inner {
-  	border: 2px solid #002052;
+		border: 2px solid #002052;
   	border-radius: 0px 0 0 0px;
   	padding: 0 10px;
   	outline: none;

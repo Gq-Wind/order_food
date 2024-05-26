@@ -6,16 +6,15 @@
     </div>
     <div slot="footer" style="display:flex">
 		<el-upload
-		  :action="$base.url + 'file/upload'"
-		  :on-success="uploadSuccess"
-		  :show-file-list="false"
-		  accept=".jpg,.png,.jpge"
-		  style="margin-right:10px">
-		  <el-button icon="el-icon-upload2" size="small">
-		    上传图片
-		  </el-button>
+		:action="$base.url + 'file/upload'"
+		:on-success="uploadSuccess"
+		:show-file-list="false"
+		accept=".jpg,.png,.jpge"
+		style="margin-right:10px">
+		<el-button icon="el-icon-upload2" size="small">
+		上传图片
+		</el-button>
 		</el-upload>
-      
       <el-button @click="drawImage" icon="el-icon-camera" size="small">
         拍照
       </el-button>
@@ -143,7 +142,6 @@
       getCompetence() {
 
         //必须在model中render后才可获取到dom节点,直接获取无法获取到model中的dom节点
-
         this.$nextTick(() => {
 
           const _this = this;

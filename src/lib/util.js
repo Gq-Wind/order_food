@@ -2,9 +2,9 @@ Date.prototype.Format = function(fmt) {
     var o = {
         "M+": this.getMonth() + 1,
         "d+": this.getDate(),
-        "h+": this.getHours(), 
+        "h+": this.getHours(),
         "m+": this.getMinutes(),
-        "s+": this.getSeconds(), 
+        "s+": this.getSeconds(),
         "S": this.getMilliseconds()
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
@@ -40,5 +40,4 @@ export default {
         translator(parents, children)
         return parents
     },
-    
 }

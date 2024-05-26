@@ -34,14 +34,6 @@
 					<view class="lable" :style='{"width":"auto","padding":"0 20rpx 0 0","lineHeight":"80rpx","fontSize":"28rpx","color":"#000","textAlign":"right"}'>备注：</view>
 					<view  class="text" :style='{"padding":"0px","margin":"0px","lineHeight":"80rpx","fontSize":"28rpx","color":"rgb(0, 0, 0)"}'>{{detail.remark}}</view>
 				</view>
-
-
-
-
-
-
-
-
 				<view class="bottom-content bg-white tabbar border shop" :style='{"width":"100%","padding":"10rpx 24rpx","flexWrap":"wrap","background":"none","display":"flex","height":"auto"}'>
 
 					<button :style='{"border":"0","padding":"0 20rpx","margin":"0 10rpx 10rpx","color":"rgb(255, 255, 255)","borderRadius":"10rpx","background":"rgb(255, 170, 51)","width":"calc(100% / 3 - 20rpx)","fontSize":"26rpx","height":"80rpx"}' v-if="userid&&isAuth('storeup','私聊')" @tap="chatClick">联系TA</button>

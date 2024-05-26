@@ -10,15 +10,12 @@ export default ({ config, db }) => {
 
 	// 用户登录接口
 	api.post('/login', async (req, res) => {
-
 		try {
-
 			let userinfo = await UsersModel.findOne({ where: { username: req.query.username, password: req.query.password } })
 			if (userinfo === null) {
 				toRes.session(res, -1, '用户名或密码错误！')
 				return;
 			}
-
 			const token = jwt.sign(
 				{
 					id: userinfo.dataValues.id,
@@ -46,7 +43,7 @@ export default ({ config, db }) => {
 	api.all('/logout', (req, res) => {
 
 		if (!toRes.auth(req, res, '管理员')) return
-		
+
 		req.session.destroy(err => {
 			toRes.session(res, 0, '退出成功！')
 		})
@@ -67,7 +64,7 @@ export default ({ config, db }) => {
 				toRes.session(res, 0, '注册成功！')
 			}
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -78,10 +75,10 @@ export default ({ config, db }) => {
 		try {
 
 			if (!toRes.auth(req, res, '管理员')) return
-			
+
 			toRes.record(res, 0, await UsersModel.findOne({ where: { id: req.session.userinfo.id } }))
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -113,13 +110,13 @@ export default ({ config, db }) => {
 				offset: (page - 1) * limit,
 				limit
 			})
-			
+
 			result.currPage = page
 			result.pageSize = limit
 
 			toRes.page(res, 0, result)
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -141,7 +138,7 @@ export default ({ config, db }) => {
 				toRes.session(res, 0, '添加成功！')
 			}
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -161,7 +158,7 @@ export default ({ config, db }) => {
 
 			toRes.session(res, 0, '编辑成功！')
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})

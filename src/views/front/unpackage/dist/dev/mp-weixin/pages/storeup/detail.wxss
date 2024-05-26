@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+page {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
+.content {
+  min-height: calc(100vh - 44px);
+  box-sizing: border-box;
+}
+.seat-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #FFFFFF;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+.seat-list .seat-item {
+  width: 33.33%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+}
+.seat-list .seat-item .seat-icon {
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 10rpx;
+}
+audio {
+  display: flex;
+  flex-direction: column;
+}
+.audio .uni-audio-default {
+  width: inherit;
+}
+

@@ -6,15 +6,7 @@ import toRes from "../lib/toRes";
 import ShangjiaModel from "../models/ShangjiaModel";
 import util from "../lib/util";
 import jwt from "jsonwebtoken";
-import moment from "moment";
-import ConfigModel from "../models/ConfigModel";
-import https from "https";
-import request from "request";
-import qs from "querystring";
-import path from "path";
-import fs from "fs";
-import config from "../config.json";
-const redis = require("redis");
+
 
 export default ({ config, db }) => {
   let api = Router();

@@ -1,4 +1,3 @@
-import { version } from '../../package.json'
 import { Router } from 'express'
 import { Sequelize, Op,literal, QueryTypes } from 'sequelize'
 import sequelize from '../models/sequelize'
@@ -6,16 +5,6 @@ import toRes from '../lib/toRes'
 import CartModel from '../models/CartModel'
 import util from '../lib/util'
 import jwt from 'jsonwebtoken'
-import moment from 'moment'
-import ConfigModel from '../models/ConfigModel'
-import https from 'https'
-import request from 'request'
-import qs from 'querystring'
-import path from 'path'
-import fs from 'fs'
-import config from '../config.json'
-const redis = require('redis')
-
 
 
 
@@ -156,7 +145,7 @@ export default ({ config, db }) => {
 				offset: (page - 1) * limit,
 				limit
 			})
-			
+
 			result.currPage = page
 			result.pageSize = limit
 
@@ -174,7 +163,7 @@ export default ({ config, db }) => {
 			let result = await CartModel.findAll()
 			toRes.record(res, 0, result)
 		} catch(err) {
-			
+
 			toRes.session(res, 401, '您的权限不够！', '', 200)
 		}
 	})
@@ -188,7 +177,7 @@ export default ({ config, db }) => {
 				dictionary[key] = req.query[key];
 			}
 			let result = await CartModel.findOne({where:dictionary})
-			
+
 			toRes.record(res, 0, result)
 		} catch(err) {
 			res.status(500).render(err)
@@ -232,13 +221,13 @@ export default ({ config, db }) => {
 				offset: (page - 1) * limit,
 				limit
 			})
-			
+
 			result.currPage = page
 			result.pageSize = limit
 
 			toRes.page(res, 0, result)
 		} catch(err) {
-			
+
 			toRes.session(res, 401, '您的权限不够！', '', 200)
 		}
 	})
@@ -269,7 +258,7 @@ export default ({ config, db }) => {
 				toRes.session(res, 0, '添加成功！')
 			}
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -301,7 +290,7 @@ export default ({ config, db }) => {
 				toRes.session(res, 0, '添加成功！')
 			}
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -321,7 +310,7 @@ export default ({ config, db }) => {
 
 			toRes.session(res, 0, '编辑成功！')
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -381,7 +370,7 @@ export default ({ config, db }) => {
 		try {
 
 			let sql = 'SELECT 0 AS count'
-			
+
 			if (req.params.type == 1) {
 				if (req.query.remindstart) sql = "SELECT COUNT(*) AS count FROM cart WHERE " + where + " AND " + req.params.columnName + " >= '" + req.query.remindstart + "'"
 				if (req.query.remindend) sql = "SELECT COUNT(*) AS count FROM cart WHERE " + where + " AND " + req.params.columnName + " <= '" + req.query.remindend + "'"
@@ -416,7 +405,7 @@ export default ({ config, db }) => {
 
 			toRes.count(res, 0, results.count)
 		} catch(err) {
-			
+
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -430,7 +419,7 @@ export default ({ config, db }) => {
 			let columnName = req.params.columnName
 			// let tableName = "cart"
 			let where = " WHERE 1 = 1 "
-			sql = "SELECT COUNT(*) AS total, " + columnName + " FROM cart " + where + " GROUP BY " + columnName 
+			sql = "SELECT COUNT(*) AS total, " + columnName + " FROM cart " + where + " GROUP BY " + columnName
 			toRes.record(res, 0, await sequelize.query(sql, {
 				plain: false,
 				raw: true,
@@ -456,7 +445,7 @@ export default ({ config, db }) => {
 			}
 
 			sql = "SELECT " + xColumnName + ", SUM(" + yColumnName + ") AS total FROM cart " + where + " GROUP BY " + xColumnName + " DESC"
-			
+
 			toRes.record(res, 0, await sequelize.query(sql, {
 				plain: false,
 				raw: true,
@@ -471,7 +460,7 @@ export default ({ config, db }) => {
 	// (按值统计）时间统计类型(多)
 	api.get('/valueMul/:xColumnName', async (req, res) => {
 
-		try {	
+		try {
 			let sql = ""
 			let xColumnName = req.params.xColumnName
 			let yColumnName = req.query.yColumnNameMul
@@ -486,7 +475,7 @@ export default ({ config, db }) => {
 				});
 				return results;
 			})
-            	
+
 			toRes.record(res, 0, await Promise.all(promises))
 		} catch(err) {
 
@@ -497,7 +486,7 @@ export default ({ config, db }) => {
 	// (按值统计）时间统计类型(多)
 	api.get('/valueMul/:xColumnName/:timeStatType', async (req, res) => {
 
-		try {	
+		try {
 			let sql = ""
 			let xColumnName = req.params.xColumnName
 			let yColumnName = req.query.yColumnNameMul
@@ -529,7 +518,7 @@ export default ({ config, db }) => {
 				});
 				return results;
 			})
-            	
+
 			toRes.record(res, 0, await Promise.all(promises))
 		} catch(err) {
 
@@ -541,7 +530,7 @@ export default ({ config, db }) => {
 	api.get('/value/:xColumnName/:yColumnName/:timeStatType', async (req, res) => {
 
 		try {
-			
+
 			let sql = ""
 			let xColumnName = req.params.xColumnName
 			let yColumnName = req.params.yColumnName
