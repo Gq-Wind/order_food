@@ -10,13 +10,9 @@ import jwt from 'jsonwebtoken'
 
 export default ({ config, db }) => {
 	let api = Router()
-
-
 	// 分页接口（后端）
 	api.get('/page', async (req, res) => {
-
 		try {
-
 			let page = parseInt(req.query.page) || 1
 			let limit = parseInt(req.query.limit) || 10
 			let sort = req.query.sort || 'id'
@@ -25,7 +21,6 @@ export default ({ config, db }) => {
 			let where = {}
 			let tablename = req.query.tablename
 			if (tablename) {
-
 				if (tablename.indexOf('%') != -1) {
 					where.tablename = {
 						[Op.like]: tablename
@@ -38,7 +33,6 @@ export default ({ config, db }) => {
 			}
 			let userid = req.query.userid
 			if (userid) {
-
 				if (userid.indexOf('%') != -1) {
 					where.userid = {
 						[Op.like]: userid
@@ -64,7 +58,6 @@ export default ({ config, db }) => {
 			}
 			let goodname = req.query.goodname
 			if (goodname) {
-
 				if (goodname.indexOf('%') != -1) {
 					where.goodname = {
 						[Op.like]: goodname

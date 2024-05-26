@@ -5,8 +5,6 @@ import toRes from "../lib/toRes";
 import CanpinfenleiModel from "../models/CanpinfenleiModel";
 import util from "../lib/util";
 import jwt from "jsonwebtoken";
-
-
 export default ({ config, db }) => {
   let api = Router();
 
@@ -54,7 +52,6 @@ export default ({ config, db }) => {
       //toRes.session(res, 500, '服务器错误！', '', 500)
     }
   });
-
   // 分页接口（前端）
   api.get("/lists", async (req, res) => {
     try {
@@ -64,7 +61,6 @@ export default ({ config, db }) => {
       toRes.session(res, 401, "您的权限不够！", "", 200);
     }
   });
-
   // 查询单条记录（前端）
   api.get("/query", async (req, res) => {
     try {
@@ -79,7 +75,6 @@ export default ({ config, db }) => {
       res.status(500).render(err);
     }
   });
-
   // 分页接口（前端）
   api.get("/list", async (req, res) => {
     try {
@@ -123,7 +118,6 @@ export default ({ config, db }) => {
       toRes.session(res, 401, "您的权限不够！", "", 200);
     }
   });
-
   // 保存接口（后端）
   api.post("/save", async (req, res) => {
     try {
@@ -151,7 +145,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 保存接口（前端）
   api.post("/add", async (req, res) => {
     try {
@@ -183,7 +176,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 更新接口
   api.post("/update", async (req, res) => {
     try {
@@ -212,7 +204,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 删除接口
   api.post("/delete", async (req, res) => {
     try {
@@ -229,7 +220,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 详情接口（后端）
   api.all("/info/:id", async (req, res) => {
     try {
@@ -242,7 +232,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 详情接口（前端）
   api.all("/detail/:id", async (req, res) => {
     try {
@@ -255,7 +244,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 获取需要提醒的记录数接口
   api.get("/remind/:columnName/:type", async (req, res) => {
     let where = " 1=1 ";
@@ -364,7 +352,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 分组统计接口
   api.get("/group/:columnName", async (req, res) => {
     try {
@@ -392,7 +379,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 统计指定字段
   api.get("/value/:xColumnName/:yColumnName", async (req, res) => {
     try {
@@ -428,7 +414,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // (按值统计）时间统计类型(多)
   api.get("/valueMul/:xColumnName", async (req, res) => {
     try {
@@ -461,7 +446,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // (按值统计）时间统计类型(多)
   api.get("/valueMul/:xColumnName/:timeStatType", async (req, res) => {
     try {
@@ -583,7 +567,6 @@ export default ({ config, db }) => {
       toRes.session(res, 500, "服务器错误！", "", 500);
     }
   });
-
   // 按日期统计
   api.get(
     "/value/:xColumnName/:yColumnName/:timeStatType",
@@ -700,6 +683,5 @@ export default ({ config, db }) => {
       }
     }
   );
-
   return api;
 };

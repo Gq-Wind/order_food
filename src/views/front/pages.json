@@ -249,8 +249,6 @@
 				"selectedIconPath": "static/tabs/index1.png",
 				"text": "首页"
 			}
-			
-
 			,{
 				"pagePath": "pages/canpinxinxi/list",
 				"iconPath": "/static/tabs/icon1.png",
@@ -263,17 +261,12 @@
 				"selectedIconPath": "/static/tabs/icon2_act.png",
 				"text": "公告信息"
 			}
-
-
-
-
-
-            ,{
-                "pagePath": "pages/shop-cart/shop-cart",
-                "iconPath": "static/tabs/cart.png",
-                "selectedIconPath": "static/tabs/cart1.png",
-                "text": "购物车"
-            }
+			,{
+					"pagePath": "pages/shop-cart/shop-cart",
+					"iconPath": "static/tabs/cart.png",
+					"selectedIconPath": "static/tabs/cart1.png",
+					"text": "购物车"
+			}
 			,{
 				"pagePath": "pages/center/center",
 				"iconPath": "static/tabs/mine.png",

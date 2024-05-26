@@ -18,7 +18,7 @@
 	@import "/colorui/main.css";
 	@import "/colorui/icon.css";
 	/*每个页面公共css */
- 	@import "/assets/css/style.scss";
+	@import "/assets/css/style.scss";
 	
 	/* #ifndef MP-WEIXIN */
 	@import url("https://at.alicdn.com/t/c/font_4097802_w9071sf3dx.css");
@@ -34,7 +34,7 @@
 		border: none;
 	}
 	view, form, scroll-view, swiper, button, input, textarea, label, navigator, image {
-	    box-sizing: border-box;
+		box-sizing: border-box;
 	}
 	
 	.uni-product-list {
