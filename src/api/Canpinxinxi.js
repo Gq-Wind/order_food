@@ -1,4 +1,3 @@
-// import { version } from "../../package.json";
 import { Router } from "express";
 import { Op, QueryTypes } from "sequelize";
 import sequelize from "../models/sequelize";
@@ -11,7 +10,6 @@ import moment from "moment";
 
 export default ({ config, db }) => {
   let api = Router();
-
   // 分页接口（后端）
   api.get("/page", async (req, res) => {
     try {
@@ -620,7 +618,6 @@ export default ({ config, db }) => {
         raw: true,
         type: QueryTypes.SELECT,
       });
-
       toRes.count(res, 0, results.count);
     } catch (err) {
       toRes.session(res, 500, "服务器错误！", "", 500);

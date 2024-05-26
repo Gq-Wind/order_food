@@ -51,8 +51,6 @@
 			</template>
 		  </el-menu>
 		</el-scrollbar>
-
-
 	</div>
 </template>
 
@@ -199,19 +197,19 @@ export default {
 	},
 	methods: {
 		collapse() {
-		  this.isCollapse = !this.isCollapse
-		  this.$emit('oncollapsechange', this.isCollapse)
+			this.isCollapse = !this.isCollapse
+			this.$emit('oncollapsechange', this.isCollapse)
 		},
 		styleChange() {
 			this.$nextTick(() => {
-								document.querySelectorAll('.el-menu-vertical-demo .el-submenu .el-menu').forEach(el => {
-				  el.removeAttribute('style')
-				  const icon = {"border":"none","display":"none"}
-				  Object.keys(icon).forEach((key) => {
+					document.querySelectorAll('.el-menu-vertical-demo .el-submenu .el-menu').forEach(el => {
+					el.removeAttribute('style')
+					const icon = {"border":"none","display":"none"}
+					Object.keys(icon).forEach((key) => {
 					el.style[key] = icon[key]
-				  })
+					})
 				})
-											})
+			})
 		},
 		menuHandler(name) {
 			let router = this.$router
@@ -223,33 +221,33 @@ export default {
 </script>
 <style lang="scss" scoped>
 	.menu-preview {
-	  .el-scrollbar {
-	    height: 100%;
+		.el-scrollbar {
+			height: 100%;
 	
-	    & /deep/ .scrollbar-wrapper {
-	      overflow-x: hidden;
-	    }
+		& /deep/ .scrollbar-wrapper {
+				overflow-x: hidden;
+		}
 		
-				// 竖向
+		// 竖向
 		.el-menu-vertical-demo {
-		  .el-submenu:first-of-type /deep/ .el-submenu__title .el-submenu__icon-arrow {
-		    display: none;
-		  }
+			.el-submenu:first-of-type /deep/ .el-submenu__title .el-submenu__icon-arrow {
+				display: none;
+			}
 		}
 		
 		.el-menu-vertical-demo>.el-menu-item {
-				  				  cursor: pointer;
-				  				  padding: 0 20px;
-				  				  color: #333;
-				  				  white-space: nowrap;
-				  				  background: #fff;
-				  				  position: relative;
-				  		}
+			cursor: pointer;
+			padding: 0 20px;
+			color: #333;
+			white-space: nowrap;
+			background: #fff;
+			position: relative;
+		}
 		
 		.el-menu-vertical-demo>.el-menu-item:hover {
-						color: #fff;
-						background: blue;
-					}
+			color: #fff;
+			background: blue;
+		}
 		
 		.el-menu-vertical-demo .el-submenu /deep/ .el-submenu__title {
 						cursor: pointer;
@@ -310,8 +308,8 @@ export default {
 						height: 50px;
 					}
 		// 竖向
-			  }
-	  	}
+			}
+	}
 	// 竖向 样式二-open
 	.scrollbar-wrapper-open .el-menu-vertical-2>.el-menu-item.other {
 		font-size: inherit;

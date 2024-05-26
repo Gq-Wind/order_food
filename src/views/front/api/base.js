@@ -1,4 +1,4 @@
 ﻿const base = {
-    url : "http://localhost:8080/nodejs288jz7r7/"
+    url : "http://localhost:8080/order_food/"
 }
 export default base

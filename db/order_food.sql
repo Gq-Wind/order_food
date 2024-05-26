@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.31, for Linux (x86_64)
 --
--- Host: localhost    Database: nodejs288jz7r7
+-- Host: localhost    Database: order_food
 -- ------------------------------------------------------
 -- Server version	5.7.31
 
@@ -16,14 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `nodejs288jz7r7`
+-- Current Database: `order_food`
 --
 
-/*!40000 DROP DATABASE IF EXISTS `nodejs288jz7r7`*/;
+/*!40000 DROP DATABASE IF EXISTS `order_food`*/;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `nodejs288jz7r7` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `order_food` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
-USE `nodejs288jz7r7`;
+USE `order_food`;
 
 --
 -- Table structure for table `address`

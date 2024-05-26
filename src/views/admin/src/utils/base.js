@@ -1,10 +1,10 @@
 const base = {
     get() {
         return {
-            url : "http://localhost:8080/nodejs288jz7r7/",
-            name: "nodejs288jz7r7",
+            url : "http://localhost:8080/order_food/",
+            name: "order_food",
             // 退出到首页链接
-            indexUrl: 'http://localhost:8080/nodejs288jz7r7/front/h5/index.html'
+            indexUrl: 'http://localhost:8080/order_food/front/h5/index.html'
         };
     },
     getProjectName(){

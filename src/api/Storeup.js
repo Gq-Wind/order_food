@@ -376,8 +376,6 @@ export default ({ config, db }) => {
 	api.all('/detail/:id', async (req, res) => {
 
 		try {
-
-
 			toRes.record(res, 0, await StoreupModel.findOne({ where: { id: req.params.id } }))
 		} catch(err) {
 
@@ -432,15 +430,6 @@ export default ({ config, db }) => {
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
-
-
-
-
-
-
-
-
-
 
 	// 分组统计接口
 	api.get('/group/:columnName', async (req, res) => {

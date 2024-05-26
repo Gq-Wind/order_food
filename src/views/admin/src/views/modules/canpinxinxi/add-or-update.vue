@@ -454,7 +454,7 @@ export default {
         this.ruleForm = data.data;
         //解决前台上传图片后台不显示的问题
         let reg=new RegExp('../../../upload','g')//g代表全部
-        this.ruleForm.canpinjieshao = this.ruleForm.canpinjieshao.replace(reg,'../../../nodejs288jz7r7/upload');
+        this.ruleForm.canpinjieshao = this.ruleForm.canpinjieshao.replace(reg,'../../../order_food/upload');
         } else {
           this.$message.error(data.msg);
         }

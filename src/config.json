@@ -2,10 +2,10 @@
   "port": 8080,
   "bodyLimit": "100000kb",
   "corsHeaders": ["Link"],
-  "projectName": "nodejs288jz7r7",
+  "projectName": "order_food",
   "dbConnection": {
     "dbtype": "mysql",
-    "database": "nodejs288jz7r7",
+    "database": "order_food",
     "username": "root",
     "password": "Gg20020407!"
   },

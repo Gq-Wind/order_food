@@ -81,7 +81,7 @@
 	},
 	"h5": {
 		"router" : {
-		    "base" : "/nodejs288jz7r7/front/h5/"
+		    "base" : "/order_food/front/h5/"
 		},
 		"sdkConfigs" : {
 		    "maps" : {

@@ -321,22 +321,16 @@ export default ({ config, db }) => {
 
 	// 获取需要提醒的记录数接口
 	api.get('/remind/:columnName/:type', async (req, res) => {
-
-        let where = ' 1=1 '
-
+    let where = ' 1=1 '
 		try {
-
 			let sql = 'SELECT 0 AS count'
-
 			if (req.params.type == 1) {
 				if (req.query.remindstart) sql = "SELECT COUNT(*) AS count FROM address WHERE " + where + " AND " + req.params.columnName + " >= '" + req.query.remindstart + "'"
 				if (req.query.remindend) sql = "SELECT COUNT(*) AS count FROM address WHERE " + where + " AND " + req.params.columnName + " <= '" + req.query.remindend + "'"
-
 				if (req.query.remindstart && req.query.remindend) {
 					sql = "SELECT COUNT(*) AS count FROM address WHERE " + where + " AND " + req.params.columnName + " >= '" + req.query.remindstart + "' AND " + req.params.columnName + " <= '" + req.query.remindend + "'"
 				}
 			}
-
 			if (req.params.type == 2) {
 				if (req.query.remindstart) {
 					let remindStart = util.getDateTimeFormat(0 + Number(req.query.remindstart), "yyyy-MM-dd")
@@ -346,23 +340,19 @@ export default ({ config, db }) => {
 					let remindEnd = util.getDateTimeFormat(req.query.remindend, "yyyy-MM-dd")
 					sql = "SELECT COUNT(*) AS count FROM address WHERE " + where + " AND " + req.params.columnName + " <= '" + remindEnd + "'"
 				}
-
 				if (req.query.remindstart && req.query.remindend) {
 					let remindStart = util.getDateTimeFormat(0 + Number(req.query.remindstart), "yyyy-MM-dd")
 					let remindEnd = util.getDateTimeFormat(req.query.remindend, "yyyy-MM-dd")
 					sql = "SELECT COUNT(*) AS count FROM address WHERE " + where + " AND " + req.params.columnName + " >= '" + remindStart + "' AND " + req.params.columnName + " <= '" + remindEnd + "'"
 				}
 			}
-
 			const results = await sequelize.query(sql, {
 				plain: true,
 				raw: true,
 				type: QueryTypes.SELECT
 			})
-
 			toRes.count(res, 0, results.count)
 		} catch(err) {
-
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})

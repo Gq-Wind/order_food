@@ -97,10 +97,6 @@
 								<span class="icon iconfont icon-xiugai10" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								修改
 							</el-button>
-
-
-
-
 							<el-button class="del" v-if="isAuth('shangjia','删除') " type="primary" @click="deleteHandler(scope.row.id )">
 								<span class="icon iconfont icon-guanbi1" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								删除
@@ -127,11 +123,6 @@
 		
 		<!-- 添加/修改页面  将父组件的search方法传递给子组件-->
 		<add-or-update v-if="addOrUpdateFlag" :parent="this" ref="addOrUpdate"></add-or-update>
-
-
-
-
-
 		<el-dialog title="预览图" :visible.sync="previewVisible" width="50%">
 			<img :src="previewImg" alt="" style="width: 100%;">
 		</el-dialog>
@@ -139,7 +130,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import AddOrUpdate from "./add-or-update";
 	export default {
 		data() {
