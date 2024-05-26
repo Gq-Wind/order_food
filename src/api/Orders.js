@@ -16,9 +16,6 @@ import fs from 'fs'
 import config from '../config.json'
 const redis = require('redis')
 
-
-
-
 export default ({ config, db }) => {
 	let api = Router()
 
@@ -515,18 +512,14 @@ export default ({ config, db }) => {
 	api.post('/update', async (req, res) => {
 
 		try {
-
-
 			await OrdersModel.update(req.body, {
 				where: {
 				  id: req.body.id || 0
 				}
 			})
 
-
 			toRes.session(res, 0, '编辑成功！')
 		} catch(err) {
-			
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})

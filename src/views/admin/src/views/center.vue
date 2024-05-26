@@ -135,7 +135,6 @@ export default {
         return
       }
 
-
       if((!this.ruleForm.xingming)&& 'yonghu'==this.flag){
         this.$message.error('姓名不能为空');
         return
@@ -171,7 +170,6 @@ export default {
         this.$message.error('密码不能为空');
         return
       }
-
 
       if((!this.ruleForm.cantingmingcheng)&& 'shangjia'==this.flag){
         this.$message.error('餐厅名称不能为空');

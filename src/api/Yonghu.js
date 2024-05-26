@@ -16,9 +16,6 @@ import fs from 'fs'
 import config from '../config.json'
 const redis = require('redis')
 
-
-
-
 export default ({ config, db }) => {
 	let api = Router()
 
@@ -266,7 +263,7 @@ export default ({ config, db }) => {
 		}
 	})
 
-	  // 分页接口（前端）
+	  // 查询全部接口（前端）
 	api.get('/lists', async (req, res) => {
 
 		try {

@@ -110,6 +110,7 @@
 
 
 
+
 	</div>
 </template>
 
@@ -252,68 +253,6 @@ import AddOrUpdate from "./add-or-update";
     },
 	backClick(){
 		history.back()
-	},
-    // 下载
-    download(file){
-      let arr = file.replace(new RegExp('upload/', "g"), "")
-      axios.get(this.$base.url + 'file/download?fileName=' + arr, {
-      	headers: {
-      		token: this.$storage.get('Token')
-      	},
-      	responseType: "blob"
-      }).then(({
-      	data
-      }) => {
-      	const binaryData = [];
-      	binaryData.push(data);
-      	const objectUrl = window.URL.createObjectURL(new Blob(binaryData, {
-      		type: 'application/pdf;chartset=UTF-8'
-      	}))
-      	const a = document.createElement('a')
-      	a.href = objectUrl
-      	a.download = arr
-      	// a.click()
-      	// 下面这个写法兼容火狐
-      	a.dispatchEvent(new MouseEvent('click', {
-      		bubbles: true,
-      		cancelable: true,
-      		view: window
-      	}))
-      	window.URL.revokeObjectURL(data)
-      },err=>{
-		  axios.get((location.href.split(this.$base.name).length>1 ? location.href.split(this.$base.name)[0] :'') + this.$base.name + '/file/download?fileName=' + arr, {
-		  	headers: {
-		  		token: this.$storage.get('Token')
-		  	},
-		  	responseType: "blob"
-		  }).then(({
-		  	data
-		  }) => {
-		  	const binaryData = [];
-		  	binaryData.push(data);
-		  	const objectUrl = window.URL.createObjectURL(new Blob(binaryData, {
-		  		type: 'application/pdf;chartset=UTF-8'
-		  	}))
-		  	const a = document.createElement('a')
-		  	a.href = objectUrl
-		  	a.download = arr
-		  	// a.click()
-		  	// 下面这个写法兼容火狐
-		  	a.dispatchEvent(new MouseEvent('click', {
-		  		bubbles: true,
-		  		cancelable: true,
-		  		view: window
-		  	}))
-		  	window.URL.revokeObjectURL(data)
-		  })
-	  })
-    },
-	// 预览
-	preClick(file){
-		if(!file){
-			return false
-		}
-		window.open((location.href.split(this.$base.name).length>1 ? location.href.split(this.$base.name)[0] + this.$base.name + '/' + file :this.$base.url + file))
 	},
 	discusscanpinxinxistatusChange(e,row){
 		if(row.status==0){
@@ -1060,4 +999,5 @@ import AddOrUpdate from "./add-or-update";
 				position: relative;
 				transition: .3s;
 			}
+
 </style>

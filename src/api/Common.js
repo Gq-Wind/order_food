@@ -305,8 +305,5 @@ export default ({ config, db }) => {
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
-
-
-
 	return api
 }

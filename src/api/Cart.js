@@ -288,8 +288,6 @@ export default ({ config, db }) => {
 				toRes.session(res, 401, '请登录后再操作', '', 401)
 			}
 
-
-
 			req.body.userid = req.session.userinfo === undefined ? jwt.decode(req.headers.token).id : req.session.userinfo.id
 
 
@@ -422,15 +420,6 @@ export default ({ config, db }) => {
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
-
-
-
-
-
-
-
-
-
 
 	// 分组统计接口
 	api.get('/group/:columnName', async (req, res) => {

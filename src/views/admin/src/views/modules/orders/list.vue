@@ -105,12 +105,11 @@
 							{{scope.row.goodname}}
 						</template>
 					</el-table-column>
-					<!-- 无 -->
 					<el-table-column :resizable='true' :sortable='true' prop="picture" width="200" label="商品图片">
 						<template slot-scope="scope">
 							<div v-if="scope.row.picture">
-								<img v-if="scope.row.picture.substring(0,4)=='http'" :src="scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover">
-								<img v-else :src="$base.url+scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover">
+								<img v-if="scope.row.picture.substring(0,4)=='http'" :src="scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover" @click="imgPreView(scope.row.picture.split(',')[0])">
+								<img v-else :src="$base.url+scope.row.picture.split(',')[0]" width="100" height="100" style="object-fit: cover" @click="imgPreView($base.url+scope.row.picture.split(',')[0])">
 							</div>
 							<div v-else>无图片</div>
 						</template>
@@ -373,6 +372,10 @@
 			<el-button @click="goodtypeAmountChartDialog">返回</el-button>
 		  </span>
 		</el-dialog>
+
+		<el-dialog title="预览图" :visible.sync="previewVisible" width="50%">
+			<img :src="previewImg" alt="" style="width: 100%;">
+		</el-dialog>
 	</div>
 </template>
 
@@ -445,6 +448,8 @@ import AddOrUpdate from "./add-or-update";
 						}
 					]
 				],
+				previewImg: '',
+				previewVisible: false,
 			};
 		},
 		created() {
@@ -479,6 +484,10 @@ import AddOrUpdate from "./add-or-update";
 			AddOrUpdate,
 		},
 		methods: {
+			imgPreView(url){
+				this.previewImg = url
+				this.previewVisible = true
+			},
 			orderStatusFormatter: function(row, column) {
 				var temp = row.status
 				if(row.status=='已退款'&&row.sfsh!=''){
@@ -1282,6 +1291,12 @@ import AddOrUpdate from "./add-or-update";
            if(this.searchForm.goodname!='' && this.searchForm.goodname!=undefined){
             params['goodname'] = '%' + this.searchForm.goodname + '%'
           }
+          if(this.searchForm.type!='' && this.searchForm.type!=undefined){
+            params['type'] = this.searchForm.type
+          }
+          if(this.searchForm.status!='' && this.searchForm.status!=undefined){
+            params['status'] = this.searchForm.status
+          }
 			let user = JSON.parse(this.$storage.getObj('userForm'))
 			console.log(user)
 			this.$http({
@@ -1330,68 +1345,6 @@ import AddOrUpdate from "./add-or-update";
     disscussListHandler(id,type) {
 	this.$router.push({path:'/discussorders',query:{refid:id}});
     },
-    // 下载
-    download(file){
-      let arr = file.replace(new RegExp('upload/', "g"), "")
-      axios.get(this.$base.url + 'file/download?fileName=' + arr, {
-      	headers: {
-      		token: this.$storage.get('Token')
-      	},
-      	responseType: "blob"
-      }).then(({
-      	data
-      }) => {
-      	const binaryData = [];
-      	binaryData.push(data);
-      	const objectUrl = window.URL.createObjectURL(new Blob(binaryData, {
-      		type: 'application/pdf;chartset=UTF-8'
-      	}))
-      	const a = document.createElement('a')
-      	a.href = objectUrl
-      	a.download = arr
-      	// a.click()
-      	// 下面这个写法兼容火狐
-      	a.dispatchEvent(new MouseEvent('click', {
-      		bubbles: true,
-      		cancelable: true,
-      		view: window
-      	}))
-      	window.URL.revokeObjectURL(data)
-      },err=>{
-		  axios.get((location.href.split(this.$base.name).length>1 ? location.href.split(this.$base.name)[0] :'') + this.$base.name + '/file/download?fileName=' + arr, {
-		  	headers: {
-		  		token: this.$storage.get('Token')
-		  	},
-		  	responseType: "blob"
-		  }).then(({
-		  	data
-		  }) => {
-		  	const binaryData = [];
-		  	binaryData.push(data);
-		  	const objectUrl = window.URL.createObjectURL(new Blob(binaryData, {
-		  		type: 'application/pdf;chartset=UTF-8'
-		  	}))
-		  	const a = document.createElement('a')
-		  	a.href = objectUrl
-		  	a.download = arr
-		  	// a.click()
-		  	// 下面这个写法兼容火狐
-		  	a.dispatchEvent(new MouseEvent('click', {
-		  		bubbles: true,
-		  		cancelable: true,
-		  		view: window
-		  	}))
-		  	window.URL.revokeObjectURL(data)
-		  })
-	  })
-    },
-	// 预览
-	preClick(file){
-		if(!file){
-			return false
-		}
-		window.open((location.href.split(this.$base.name).length>1 ? location.href.split(this.$base.name)[0] + this.$base.name + '/' + file :this.$base.url + file))
-	},
 	ordersstatusChange(e,row){
 		if(row.status==0){
 			row.passwordwrongnum = 0
@@ -2125,4 +2078,5 @@ import AddOrUpdate from "./add-or-update";
 				position: relative;
 				transition: .3s;
 			}
+
 </style>

@@ -28,7 +28,7 @@
     "type": "git",
     "url": ""
   },
-  "author": "xiezn",
+  "author": "gxz",
   "license": "MIT",
   "dependencies": {
     "@alicloud/imagerecog20190930": "^2.0.9",

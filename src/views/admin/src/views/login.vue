@@ -60,7 +60,7 @@ export default {
 
   },
   destroyed() {
-	    },
+	},
   components: {
   },
   methods: {
@@ -127,7 +127,8 @@ export default {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-      background: url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg);
+  // background: url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg);
+  background: url('/src/views/admin1/src/assets/img/login-bg.png');
         
   .list-item /deep/ .el-input .el-input__inner {
 		border: 2px solid #002052;
@@ -154,22 +155,22 @@ export default {
 	  }
   
   .list-code /deep/ .el-input .el-input__inner {
-  	  	border: 2px solid #002052;
-  	  	border-radius: 0px 0 0 0px;
-  	  	padding: 0 10px;
-  	  	outline: none;
-  	  	color: #666;
-  	  	background: #fff;
-  	  	width: calc(100% - 100px);
-  	  	font-size: inherit;
-  	  	height: 50px;
-  	  }
+  	border: 2px solid #002052;
+  	border-radius: 0px 0 0 0px;
+  	padding: 0 10px;
+  	outline: none;
+  	color: #666;
+  	background: #fff;
+  	width: calc(100% - 100px);
+  	font-size: inherit;
+  	height: 50px;
+  }
 
   .list-type /deep/ .el-radio__input .el-radio__inner {
 		border-radius: 0;
 		background: rgba(53, 53, 53, 0);
 		border-color: #666666;
-	  }
+	}
   .list-type /deep/ .el-radio__input.is-checked .el-radio__inner {
         border-radius: 0;
         background: #018af3;
@@ -178,11 +179,11 @@ export default {
   .list-type /deep/ .el-radio__label {
 		color: #666666;
 		font-size: 16px;
-	  }
+	}
   .list-type /deep/ .el-radio__input.is-checked+.el-radio__label {
         color: #000;
         font-size: 16px;
-      }
+  }
 }
 
 </style>

@@ -413,14 +413,6 @@ export default ({ config, db }) => {
 	})
 
 
-
-
-
-
-
-
-
-
 	// 分组统计接口
 	api.get('/group/:columnName', async (req, res) => {
 

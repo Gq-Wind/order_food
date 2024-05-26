@@ -115,6 +115,8 @@ export default {
 						});
 						return false
 					}
+					if (this.$storage.get("sessionTable") == 'shangjia') {
+					}
 					if (this.ruleForm.password != password) {
 						this.$message.error("原密码错误");
 						return;
@@ -126,8 +128,6 @@ export default {
 					if (this.ruleForm.newpassword == this.ruleForm.password) {
 						this.$message.error("新密码与原密码相同");
 						return;
-					}
-					if (this.$storage.get("sessionTable") == 'shangjia') {
 					}
 					this.user.password = this.ruleForm.newpassword;
 					this.user.mima = this.ruleForm.newpassword;
