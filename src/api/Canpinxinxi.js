@@ -286,7 +286,7 @@ export default ({ config, db }) => {
     }
   });
 
-  // 分页接口（前端）
+  // 全部
   api.get("/lists", async (req, res) => {
     try {
       let result = await CanpinxinxiModel.findAll();
@@ -304,7 +304,6 @@ export default ({ config, db }) => {
         dictionary[key] = req.query[key];
       }
       let result = await CanpinxinxiModel.findOne({ where: dictionary });
-
       toRes.record(res, 0, result);
     } catch (err) {
       res.status(500).render(err);
@@ -318,7 +317,6 @@ export default ({ config, db }) => {
       let limit = parseInt(req.query.limit) || 10;
       let sort = req.query.sort || "id";
       let order = req.query.order || "asc";
-
       let where = {};
       let canpinmingcheng = req.query.canpinmingcheng;
       if (canpinmingcheng) {
@@ -368,7 +366,6 @@ export default ({ config, db }) => {
           };
         }
       }
-
       let orders = [];
       const sortList = sort.split(",");
       const orderList = order.split(",");
@@ -381,10 +378,8 @@ export default ({ config, db }) => {
         offset: (page - 1) * limit,
         limit,
       });
-
       result.currPage = page;
       result.pageSize = limit;
-
       toRes.page(res, 0, result);
     } catch (err) {
       toRes.session(res, 401, "您的权限不够！", "", 200);
@@ -477,7 +472,6 @@ export default ({ config, db }) => {
         where: { id: req.params.id },
       });
       await recordInfo.increment("clicknum");
-
       toRes.record(
         res,
         0,

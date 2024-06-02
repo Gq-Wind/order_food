@@ -326,49 +326,48 @@ export default {
 			line-height: initial;
 			vertical-align: middle;
 		}
+				.rgs-form /deep/ .upload .upload-img {
+					border: 2px solid #002355;
+					cursor: pointer;
+					border-radius: 30px;
+					color: #002355;
+					background: #fff;
+					font-weight: 600;
+					width: 120px;
+					font-size: 24px;
+					line-height: 60px;
+					text-align: center;
+					height: 60px;
+				}
 		
-		.rgs-form /deep/ .upload .upload-img {
-		  		  border: 2px solid #002355;
-		  		  cursor: pointer;
-		  		  border-radius: 30px;
-		  		  color: #002355;
-		  		  background: #fff;
-		  		  font-weight: 600;
-		  		  width: 120px;
-		  		  font-size: 24px;
-		  		  line-height: 60px;
-		  		  text-align: center;
-		  		  height: 60px;
-		  		}
+				.rgs-form /deep/ .el-upload-list .el-upload-list__item {
+					border: 2px solid #002355;
+					cursor: pointer;
+					border-radius: 30px;
+					color: #002355;
+					background: #fff;
+					font-weight: 600;
+					width: 120px;
+					font-size: 24px;
+					line-height: 60px;
+					text-align: center;
+					height: 60px;
+				}
 		
-		.rgs-form /deep/ .el-upload-list .el-upload-list__item {
-		  		  border: 2px solid #002355;
-		  		  cursor: pointer;
-		  		  border-radius: 30px;
-		  		  color: #002355;
-		  		  background: #fff;
-		  		  font-weight: 600;
-		  		  width: 120px;
-		  		  font-size: 24px;
-		  		  line-height: 60px;
-		  		  text-align: center;
-		  		  height: 60px;
-		  		}
-		
-		.rgs-form /deep/ .el-upload .el-icon-plus {
-		  		  border: 2px solid #002355;
-		  		  cursor: pointer;
-		  		  border-radius: 30px;
-		  		  color: #002355;
-		  		  background: #fff;
-		  		  font-weight: 600;
-		  		  width: 120px;
-		  		  font-size: 24px;
-		  		  line-height: 60px;
-		  		  text-align: center;
-		  		  height: 60px;
-		  		}
-	}
+				.rgs-form /deep/ .el-upload .el-icon-plus {
+					border: 2px solid #002355;
+					cursor: pointer;
+					border-radius: 30px;
+					color: #002355;
+					background: #fff;
+					font-weight: 600;
+					width: 120px;
+					font-size: 24px;
+					line-height: 60px;
+					text-align: center;
+					height: 60px;
+				}
+				}
 	.required {
 		position: relative;
 	}

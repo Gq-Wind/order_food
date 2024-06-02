@@ -27,14 +27,11 @@ export default ({ config, db }) => {
 					expiresIn: 60 * 60 * 24 * 1
 				}
 			)
-
 			userinfo.dataValues.token = token
 			delete userinfo.dataValues.password
 			req.session.userinfo = userinfo
-
 			toRes.session(res, 0, '登录成功！', token)
 		} catch(err) {
-
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
@@ -95,9 +92,7 @@ export default ({ config, db }) => {
 			let sort = req.query.sort || 'id'
 			let order = req.query.order || 'asc'
 			let username = req.query.username
-
 			let where = {}
-
 			if (username) {
 				where.username = {
 					[Op.like]: username

@@ -255,14 +255,13 @@ var objcross = this.$storage.getObj('crossObj');
 							});
 
 						}
-					} else { 
-				} 
+					} else {} 
 			});
 		} else {
 			this.$http({
 				url: `address/${!this.ruleForm.id ? "save" : "update"}`,
 				method: "post",
-			   data: this.ruleForm
+				data: this.ruleForm
 			}).then(({ data }) => {
 				if (data && data.code === 0) {
 					this.$message({
@@ -312,143 +311,145 @@ var objcross = this.$storage.getObj('crossObj');
 	.el-date-editor.el-input {
 		width: auto;
 	}
+		.add-update-preview .el-form-item /deep/ .el-form-item__label {
+			padding: 0 10px 0 0;
+			color: #999;
+			font-weight: 500;
+			display: inline-block;
+			width: 150px;
+			font-size: inherit;
+			line-height: 40px;
+			text-align: right;
+		}
 	
-	.add-update-preview .el-form-item /deep/ .el-form-item__label {
-	  	  padding: 0 10px 0 0;
-	  	  color: #999;
-	  	  font-weight: 500;
-	  	  display: inline-block;
-	  	  width: 150px;
-	  	  font-size: inherit;
-	  	  line-height: 40px;
-	  	  text-align: right;
-	  	}
+		.add-update-preview .el-form-item /deep/ .el-form-item__content {
+			margin-left: 150px;
+		}
 	
-	.add-update-preview .el-form-item /deep/ .el-form-item__content {
-	  margin-left: 150px;
-	}
+		.add-update-preview .el-input /deep/ .el-input__inner {
+			border: 0px solid #000;
+			border-radius: 0px;
+			padding: 0 12px;
+			box-shadow: 0 0 0px rgba(64, 158, 255, .5);
+			color: inherit;
+			background: #edf7ff;
+			width: 350px;
+			font-size: 14px;
+			height: 36px;
+		}
 	
-	.add-update-preview .el-input /deep/ .el-input__inner {
-	  	  border: 0px solid #000;
-	  	  border-radius: 0px;
-	  	  padding: 0 12px;
-	  	  box-shadow: 0 0 0px rgba(64, 158, 255, .5);
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  width: 350px;
-	  	  font-size: 14px;
-	  	  height: 36px;
-	  	}
-	.add-update-preview .el-input-number /deep/ .el-input__inner {
-		text-align: left;
-	  	  border: 0px solid #000;
-	  	  border-radius: 0px;
-	  	  padding: 0 12px;
-	  	  box-shadow: 0 0 0px rgba(64, 158, 255, .5);
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  width: 350px;
-	  	  font-size: 14px;
-	  	  height: 36px;
-	  	}
-	.add-update-preview .el-input-number /deep/ .el-input-number__decrease {
-		display: none;
-	}
-	.add-update-preview .el-input-number /deep/ .el-input-number__increase {
-		display: none;
-	}
+		.add-update-preview .el-input-number /deep/ .el-input__inner {
+			text-align: left;
+			border: 0px solid #000;
+			border-radius: 0px;
+			padding: 0 12px;
+			box-shadow: 0 0 0px rgba(64, 158, 255, .5);
+			color: inherit;
+			background: #edf7ff;
+			width: 350px;
+			font-size: 14px;
+			height: 36px;
+		}
 	
-	.add-update-preview .el-select /deep/ .el-input__inner {
-	  	  border: 0px solid #000;
-	  	  border-radius: 0px;
-	  	  padding: 0 10px;
-	  	  box-shadow: 0 0 0px rgba(64, 158, 255, .5);
-	  	  outline: none;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  width: 350px;
-	  	  font-size: 14px;
-	  	  height: 36px;
-	  	}
+		.add-update-preview .el-input-number /deep/ .el-input-number__decrease {
+			display: none;
+		}
 	
-	.add-update-preview .el-date-editor /deep/ .el-input__inner {
-	  	  border: 0px solid #000;
-	  	  border-radius: 0px;
-	  	  padding: 0 10px 0 30px;
-	  	  box-shadow: 0 0 0px rgba(64, 158, 255, .5);
-	  	  outline: none;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  width: 350px;
-	  	  font-size: 14px;
-	  	  height: 36px;
-	  	}
+		.add-update-preview .el-input-number /deep/ .el-input-number__increase {
+			display: none;
+		}
 	
-	.add-update-preview /deep/ .el-upload--picture-card {
-		background: transparent;
-		border: 0;
-		border-radius: 0;
-		width: auto;
-		height: auto;
-		line-height: initial;
-		vertical-align: middle;
-	}
+		.add-update-preview .el-select /deep/ .el-input__inner {
+			border: 0px solid #000;
+			border-radius: 0px;
+			padding: 0 10px;
+			box-shadow: 0 0 0px rgba(64, 158, 255, .5);
+			outline: none;
+			color: inherit;
+			background: #edf7ff;
+			width: 350px;
+			font-size: 14px;
+			height: 36px;
+		}
 	
-	.add-update-preview /deep/ .upload .upload-img {
-	  	  border: 0px solid #000;
-	  	  cursor: pointer;
-	  	  border-radius: 0px;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  object-fit: cover;
-	  	  width: 180px;
-	  	  font-size: 32px;
-	  	  line-height: 90px;
-	  	  text-align: center;
-	  	  height: 90px;
-	  	}
+		.add-update-preview .el-date-editor /deep/ .el-input__inner {
+			border: 0px solid #000;
+			border-radius: 0px;
+			padding: 0 10px 0 30px;
+			box-shadow: 0 0 0px rgba(64, 158, 255, .5);
+			outline: none;
+			color: inherit;
+			background: #edf7ff;
+			width: 350px;
+			font-size: 14px;
+			height: 36px;
+		}
 	
-	.add-update-preview /deep/ .el-upload-list .el-upload-list__item {
-	  	  border: 0px solid #000;
-	  	  cursor: pointer;
-	  	  border-radius: 0px;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  object-fit: cover;
-	  	  width: 180px;
-	  	  font-size: 32px;
-	  	  line-height: 90px;
-	  	  text-align: center;
-	  	  height: 90px;
-	  	}
+		.add-update-preview /deep/ .el-upload--picture-card {
+			background: transparent;
+			border: 0;
+			border-radius: 0;
+			width: auto;
+			height: auto;
+			line-height: initial;
+			vertical-align: middle;
+		}
 	
-	.add-update-preview /deep/ .el-upload .el-icon-plus {
-	  	  border: 0px solid #000;
-	  	  cursor: pointer;
-	  	  border-radius: 0px;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  object-fit: cover;
-	  	  width: 180px;
-	  	  font-size: 32px;
-	  	  line-height: 90px;
-	  	  text-align: center;
-	  	  height: 90px;
-	  	}
+		.add-update-preview /deep/ .upload .upload-img {
+			border: 0px solid #000;
+			cursor: pointer;
+			border-radius: 0px;
+			color: inherit;
+			background: #edf7ff;
+			object-fit: cover;
+			width: 180px;
+			font-size: 32px;
+			line-height: 90px;
+			text-align: center;
+			height: 90px;
+		}
 	
-	.add-update-preview .el-textarea /deep/ .el-textarea__inner {
-	  	  border: 0px solid #000;
-	  	  border-radius: 0px;
-	  	  padding: 12px;
-	  	  box-shadow: 0 0 0px rgba(64, 158, 255, .5);
-	  	  outline: none;
-	  	  color: inherit;
-	  	  background: #edf7ff;
-	  	  width: auto;
-	  	  font-size: 14px;
-	  	  min-width: 350px;
-	  	  height: 120px;
-	  	}
+		.add-update-preview /deep/ .el-upload-list .el-upload-list__item {
+			border: 0px solid #000;
+			cursor: pointer;
+			border-radius: 0px;
+			color: inherit;
+			background: #edf7ff;
+			object-fit: cover;
+			width: 180px;
+			font-size: 32px;
+			line-height: 90px;
+			text-align: center;
+			height: 90px;
+		}
+	
+		.add-update-preview /deep/ .el-upload .el-icon-plus {
+			border: 0px solid #000;
+			cursor: pointer;
+			border-radius: 0px;
+			color: inherit;
+			background: #edf7ff;
+			object-fit: cover;
+			width: 180px;
+			font-size: 32px;
+			line-height: 90px;
+			text-align: center;
+			height: 90px;
+		}
+	
+		.add-update-preview .el-textarea /deep/ .el-textarea__inner {
+			border: 0px solid #000;
+			border-radius: 0px;
+			padding: 12px;
+			box-shadow: 0 0 0px rgba(64, 158, 255, .5);
+			outline: none;
+			color: inherit;
+			background: #edf7ff;
+			width: auto;
+			font-size: 14px;
+			min-width: 350px;
+			height: 120px;
+		}
 	
 	.add-update-preview .btn .btn1 {
 				border: 0px solid rgba(126, 96, 16, .2);

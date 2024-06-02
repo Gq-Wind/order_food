@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.content.data-v-2fc1a426 {
+  height: calc(100vh - 94px);
+  box-sizing: border-box;
+}
+.passwordForm.data-v-2fc1a426 {
+  width: 100%;
+  padding: 10px 20px 60px;
+  background: #fff;
+}
+.passwordForm .passwordInput.data-v-2fc1a426 {
+  background: #eee;
+  margin: 0 0 10px;
+  padding: 0 10px;
+}
+.passwordForm .passwordInput input.data-v-2fc1a426 {
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+}
+.passwordForm .passwordBtnView.data-v-2fc1a426 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+.passwordForm .passwordBtnView .passwordBtn.data-v-2fc1a426 {
+  padding: 0 20px;
+  width: auto;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #fff;
+  background: #007aff;
+  border: none;
+  border-radius: 5px;
+}
+

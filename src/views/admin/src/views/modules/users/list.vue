@@ -63,10 +63,6 @@
 								<span class="icon iconfont icon-xiugai10" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								修改
 							</el-button>
-
-
-
-
 							<el-button class="del" v-if="isAuth('users','删除') " type="primary" @click="deleteHandler(scope.row.id )">
 								<span class="icon iconfont icon-guanbi1" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								删除
@@ -538,13 +534,6 @@ import AddOrUpdate from "./add-or-update";
 				transform: scale(1.05);
 				opacity: 0.8;
 			}
-	
-	.el-table /deep/ .el-table__body-wrapper tbody tr td .add {
-			}
-	
-	.el-table /deep/ .el-table__body-wrapper tbody tr td .add:hover {
-			}
-	
 	.el-table /deep/ .el-table__body-wrapper tbody tr td .edit {
 				border: 0px solid #36ab80;
 				cursor: pointer;
@@ -963,5 +952,4 @@ import AddOrUpdate from "./add-or-update";
 				position: relative;
 				transition: .3s;
 			}
-
 </style>

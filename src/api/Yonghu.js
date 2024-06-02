@@ -28,7 +28,7 @@ export default ({ config, db }) => {
 					id: userinfo.dataValues.id,
 					username: userinfo.dataValues.zhanghao,
 					role: '用户',
-                    loginUserColumn: 'zhanghao',
+          loginUserColumn: 'zhanghao',
 					zhanghao:userinfo.dataValues.zhanghao,
 					mima:userinfo.dataValues.mima,
 					xingming:userinfo.dataValues.xingming,
@@ -36,8 +36,7 @@ export default ({ config, db }) => {
 					shouji:userinfo.dataValues.shouji,
 					touxiang:userinfo.dataValues.touxiang,
 					money:userinfo.dataValues.money,
-                    tableName: 'yonghu'
-
+          tableName: 'yonghu'
 				},
 				config.jwtSecret,
 				{

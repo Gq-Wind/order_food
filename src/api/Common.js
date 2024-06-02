@@ -65,10 +65,8 @@ export default ({ config, db }) => {
 	api.get('/sh/:tableName', async (req, res) => {
 
 		try {
-			
 			let sfsh = req.body.sfsh === '是' ? '否' : '是'
 			await sequelize.query(`UPDATE ${req.params.tableName} SET sfsh = ${sfsh} WHERE id = ${req.body.id}`)
-
 			toRes.session(res, 0, '编辑成功！')
 		} catch(err) {
 
@@ -78,11 +76,8 @@ export default ({ config, db }) => {
 
 	// 获取需要提醒的记录数接口
 	api.get('/remind/:tableName/:columnName/:type', async (req, res) => {
-
 		try {
-
 			let sql = 'SELECT 0 AS count'
-			
 			if (req.params.type == 1) {
 				if (req.query.remindstart) sql = `SELECT COUNT(*) AS count FROM ${req.params.tableName} WHERE ${req.params.columnName} >= ${req.query.remindstart}`
 				if (req.query.remindend) sql = `SELECT COUNT(*) AS count FROM ${req.params.tableName} WHERE ${req.params.columnName} <= ${req.query.remindend}`
@@ -221,89 +216,5 @@ export default ({ config, db }) => {
 		}
 	})
 
-	// 人脸对比
-	api.get('/matchFace', async (req, res) => {
-
-		try {
-
-			let APIKeyInfo = await ConfigModel.findOne({ where: { name: 'APIKey' } })
-			let SecretKeyInfo = await ConfigModel.findOne({ where: { name: 'SecretKey' } })
-			let APIKey = APIKeyInfo.dataValues.value
-			let SecretKey = SecretKeyInfo.dataValues.value
-			
-			const param = qs.stringify({
-				'grant_type': 'client_credentials',
-				'client_id': APIKey,
-				'client_secret': SecretKey
-			});
-
-			let rawData = '';
-			https.get(
-				{
-					hostname: 'aip.baidubce.com',
-					path: '/oauth/2.0/token?' + param,
-					agent: false
-				},
-				function (resc) {
-					resc.on('data', (chunk)=>{
-						rawData += chunk;
-					});
-
-					resc.on('end',()=>{
-						let rawDataObj = JSON.parse(rawData);
-						let access_token = rawDataObj.access_token;
-						let face1 = path.join(__dirname,'..','views','upload', req.query.face1)
-						let face2 = path.join(__dirname,'..','views','upload', req.query.face2)
-						
-						let bitmap = fs.readFileSync(face1);
-						let bitmap2 = fs.readFileSync(face2);
-						let base64str1 = Buffer.from(bitmap, 'binary').toString('base64');
-						let base64str2 = Buffer.from(bitmap2, 'binary').toString('base64');
-
-						let reqParams = [
-							{
-									"image": base64str1,
-									"image_type": "BASE64",
-									"face_type": "LIVE",
-									"quality_control": "LOW",
-									"liveness_control": "NONE"
-							},
-							{
-									"image": base64str2,
-									"image_type": "BASE64",
-									"face_type": "LIVE",
-									"quality_control": "LOW",
-									"liveness_control": "NONE"
-							}
-						];
-						request({
-							url: 'https://aip.baidubce.com/rest/2.0/face/v3/match?access_token=' + access_token,
-							method: "POST",
-							json: true,
-							headers: {
-								"content-type": "application/json",
-							},
-							body: reqParams
-						}, function(error, response, body) {
-							if (!error && response.statusCode == 200) {
-								res.status(200).json({
-									code: 0,
-									score: body.result ? body.result.score : 0
-								})
-							} else {
-								res.status(200).json({
-									code: -1,
-									score: 0
-								})
-							}
-						});
-					});
-				}
-			);
-		} catch(err) {
-
-			toRes.session(res, 500, '服务器错误！', '', 500)
-		}
-	})
 	return api
 }

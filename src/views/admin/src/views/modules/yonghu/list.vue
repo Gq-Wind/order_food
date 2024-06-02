@@ -2,75 +2,79 @@
 	<div class="main-content" :style='{"color":"#666","padding":"0px 30px 30px","fontSize":"14px"}'>
 		<!-- 列表页 -->
 		<template v-if="showFlag">
-			<el-form class="center-form-pv" :style='{"padding":"0px 0px 0","margin":"0px","overflow":"hidden","flexWrap":"wrap","background":"none","display":"flex","fontSize":"inherit"}' :inline="true" :model="searchForm">
-				<el-row :style='{"padding":"10px","margin":"0 0 10px","borderRadius":"0 0 8px 8px","textAlign":"left","background":"#fff","display":"block","width":"100%","fontSize":"inherit","order":"1"}' >
+			<el-form class="center-form-pv"
+				:style='{"padding":"0px 0px 0","margin":"0px","overflow":"hidden","flexWrap":"wrap","background":"none","display":"flex","fontSize":"inherit"}'
+				:inline="true" :model="searchForm">
+				<el-row
+					:style='{"padding":"10px","margin":"0 0 10px","borderRadius":"0 0 8px 8px","textAlign":"left","background":"#fff","display":"block","width":"100%","fontSize":"inherit","order":"1"}'>
 					<div :style='{"margin":"0 10px 0 0","fontSize":"inherit","display":"inline-block"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"inherit","display":"inline-block","lineHeight":"40px","fontSize":"inherit","fontWeight":"500","height":"40px"}' class="item-label">账号</label>
-						<el-input v-model="searchForm.zhanghao" placeholder="账号" @keydown.enter.native="search()" clearable></el-input>
+						<label
+							:style='{"margin":"0 10px 0 0","color":"inherit","display":"inline-block","lineHeight":"40px","fontSize":"inherit","fontWeight":"500","height":"40px"}'
+							class="item-label">账号</label>
+						<el-input v-model="searchForm.zhanghao" placeholder="账号" @keydown.enter.native="search()"
+							clearable></el-input>
 					</div>
 					<div :style='{"margin":"0 10px 0 0","fontSize":"inherit","display":"inline-block"}'>
-						<label :style='{"margin":"0 10px 0 0","color":"inherit","display":"inline-block","lineHeight":"40px","fontSize":"inherit","fontWeight":"500","height":"40px"}' class="item-label">姓名</label>
-						<el-input v-model="searchForm.xingming" placeholder="姓名" @keydown.enter.native="search()" clearable></el-input>
+						<label
+							:style='{"margin":"0 10px 0 0","color":"inherit","display":"inline-block","lineHeight":"40px","fontSize":"inherit","fontWeight":"500","height":"40px"}'
+							class="item-label">姓名</label>
+						<el-input v-model="searchForm.xingming" placeholder="姓名" @keydown.enter.native="search()"
+							clearable></el-input>
 					</div>
 					<el-button class="search" type="success" @click="search()">
-						<span class="icon iconfont icon-chakan14" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"none","height":"40px"}'></span>
+						<span class="icon iconfont icon-chakan14"
+							:style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","display":"none","height":"40px"}'></span>
 						查询
 					</el-button>
 				</el-row>
 
-				<el-row class="actions" :style='{"margin":"0px 0 20px","color":"#fff","flexWrap":"wrap","textAlign":"left","flexDirection":"row","display":"flex","width":"100%","fontSize":"inherit","order":"2"}'>
+				<el-row class="actions"
+					:style='{"margin":"0px 0 20px","color":"#fff","flexWrap":"wrap","textAlign":"left","flexDirection":"row","display":"flex","width":"100%","fontSize":"inherit","order":"2"}'>
 					<el-button class="add" v-if="isAuth('yonghu','新增')" type="success" @click="addOrUpdateHandler()">
-						<span class="icon iconfont icon-tianjia14" :style='{"color":"inherit","margin":"0 2px","fontSize":"inherit"}'></span>
+						<span class="icon iconfont icon-tianjia14"
+							:style='{"color":"inherit","margin":"0 2px","fontSize":"inherit"}'></span>
 						添加
 					</el-button>
-					<el-button class="del" v-if="isAuth('yonghu','删除')" :disabled="dataListSelections.length?false:true" type="danger" @click="deleteHandler()">
-						<span class="icon iconfont icon-shanchu6" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
+					<el-button class="del" v-if="isAuth('yonghu','删除')" :disabled="dataListSelections.length?false:true"
+						type="danger" @click="deleteHandler()">
+						<span class="icon iconfont icon-shanchu6"
+							:style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 						删除
 					</el-button>
 
 
 
 					<el-button class="btn18" v-if="isAuth('yonghu','用户人数')" type="success" @click="chartDialog1()">
-						<span class="icon iconfont icon-a-fenxiang2" :style='{"color":"inherit","margin":"0 2px","fontSize":"inherit"}'></span>
+						<span class="icon iconfont icon-a-fenxiang2"
+							:style='{"color":"inherit","margin":"0 2px","fontSize":"inherit"}'></span>
 						用户人数
 					</el-button>
 				</el-row>
 			</el-form>
-			<div :style='{"border":"0px solid #eee","width":"100%","padding":"0","margin":"0px 0 0","borderRadius":"0px","background":"rgba(255,255,255,.9)"}'>
-				<el-table class="tables"
-					:stripe='false'
-					:style='{"padding":"0","borderColor":"#edf7ff","color":"inherit","borderRadius":"0px","borderWidth":"2px 2px 0 2px","background":"none","width":"100%","fontSize":"inherit","borderStyle":"solid"}' 
-					:border='true'
-					v-if="isAuth('yonghu','查看')"
-					:data="dataList"
-					v-loading="dataListLoading"
-				@selection-change="selectionChangeHandler">
+			<div
+				:style='{"border":"0px solid #eee","width":"100%","padding":"0","margin":"0px 0 0","borderRadius":"0px","background":"rgba(255,255,255,.9)"}'>
+				<el-table class="tables" :stripe='false'
+					:style='{"padding":"0","borderColor":"#edf7ff","color":"inherit","borderRadius":"0px","borderWidth":"2px 2px 0 2px","background":"none","width":"100%","fontSize":"inherit","borderStyle":"solid"}'
+					:border='true' v-if="isAuth('yonghu','查看')" :data="dataList" v-loading="dataListLoading"
+					@selection-change="selectionChangeHandler">
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
 					<el-table-column :resizable='true' :sortable='true' label="序号" type="index" width="50" />
-					<el-table-column :resizable='true' :sortable='true'  
-						prop="zhanghao"
-						label="账号">
+					<el-table-column :resizable='true' :sortable='true' prop="zhanghao" label="账号">
 						<template slot-scope="scope">
 							{{scope.row.zhanghao}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='true'  
-						prop="xingming"
-						label="姓名">
+					<el-table-column :resizable='true' :sortable='true' prop="xingming" label="姓名">
 						<template slot-scope="scope">
 							{{scope.row.xingming}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='true'  
-						prop="xingbie"
-						label="性别">
+					<el-table-column :resizable='true' :sortable='true' prop="xingbie" label="性别">
 						<template slot-scope="scope">
 							{{scope.row.xingbie}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='true'  
-						prop="shouji"
-						label="手机">
+					<el-table-column :resizable='true' :sortable='true' prop="shouji" label="手机">
 						<template slot-scope="scope">
 							{{scope.row.shouji}}
 						</template>
@@ -78,20 +82,27 @@
 					<el-table-column :resizable='true' :sortable='true' prop="touxiang" width="200" label="头像">
 						<template slot-scope="scope">
 							<div v-if="scope.row.touxiang">
-								<img v-if="scope.row.touxiang.substring(0,4)=='http'" :src="scope.row.touxiang.split(',')[0]" width="100" height="100" style="object-fit: cover" @click="imgPreView(scope.row.touxiang.split(',')[0])">
-								<img v-else :src="$base.url+scope.row.touxiang.split(',')[0]" width="100" height="100" style="object-fit: cover" @click="imgPreView($base.url+scope.row.touxiang.split(',')[0])">
+								<img v-if="scope.row.touxiang.substring(0,4)=='http'" :src="scope.row.touxiang.split(',')[0]"
+									width="100" height="100" style="object-fit: cover"
+									@click="imgPreView(scope.row.touxiang.split(',')[0])">
+								<img v-else :src="$base.url+scope.row.touxiang.split(',')[0]" width="100" height="100"
+									style="object-fit: cover" @click="imgPreView($base.url+scope.row.touxiang.split(',')[0])">
 							</div>
 							<div v-else>无图片</div>
 						</template>
 					</el-table-column>
 					<el-table-column width="300" label="操作">
 						<template slot-scope="scope">
-							<el-button class="view" v-if=" isAuth('yonghu','查看')" type="success" @click="addOrUpdateHandler(scope.row.id,'info')">
-								<span class="icon iconfont icon-chakan2" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
+							<el-button class="view" v-if=" isAuth('yonghu','查看')" type="success"
+								@click="addOrUpdateHandler(scope.row.id,'info')">
+								<span class="icon iconfont icon-chakan2"
+									:style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								查看
 							</el-button>
-							<el-button class="edit" v-if=" isAuth('yonghu','修改') " type="success" @click="addOrUpdateHandler(scope.row.id)">
-								<span class="icon iconfont icon-xiugai10" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
+							<el-button class="edit" v-if=" isAuth('yonghu','修改') " type="success"
+								@click="addOrUpdateHandler(scope.row.id)">
+								<span class="icon iconfont icon-xiugai10"
+									:style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								修改
 							</el-button>
 
@@ -99,42 +110,27 @@
 
 
 							<el-button class="del" v-if="isAuth('yonghu','删除') " type="primary" @click="deleteHandler(scope.row.id )">
-								<span class="icon iconfont icon-guanbi1" :style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
+								<span class="icon iconfont icon-guanbi1"
+									:style='{"margin":"0 2px","fontSize":"inherit","color":"inherit","height":"40px"}'></span>
 								删除
 							</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
 			</div>
-			<el-pagination
-				@size-change="sizeChangeHandle"
-				@current-change="currentChangeHandle"
-				:current-page="pageIndex"
-				background
-				:page-sizes="[10, 50, 100, 200]"
-				:page-size="pageSize"
-				:layout="layouts.join()"
-				:total="totalPage"
-				prev-text="上一页 "
-				next-text="下一页 "
-				:hide-on-single-page="false"
-				:style='{"padding":"0","margin":"20px 0 0","whiteSpace":"nowrap","color":"inherit","textAlign":"left","width":"100%","fontSize":"inherit","fontWeight":"500"}'
-			></el-pagination>
+			<el-pagination @size-change="sizeChangeHandle" @current-change="currentChangeHandle" :current-page="pageIndex"
+				background :page-sizes="[10, 50, 100, 200]" :page-size="pageSize" :layout="layouts.join()" :total="totalPage"
+				prev-text="上一页 " next-text="下一页 " :hide-on-single-page="false"
+				:style='{"padding":"0","margin":"20px 0 0","whiteSpace":"nowrap","color":"inherit","textAlign":"left","width":"100%","fontSize":"inherit","fontWeight":"500"}'></el-pagination>
 		</template>
-		
+
 		<!-- 添加/修改页面  将父组件的search方法传递给子组件-->
 		<add-or-update v-if="addOrUpdateFlag" :parent="this" ref="addOrUpdate"></add-or-update>
-
-
-
-
-		<el-dialog
-		  :visible.sync="chartVisiable1"
-		  width="800">
+		<el-dialog :visible.sync="chartVisiable1" width="800">
 			<div id="xingbieChart1" style="width:100%;height:600px;"></div>
-		  <span slot="footer" class="dialog-footer">
-			<el-button @click="chartDialog1">返回</el-button>
-		  </span>
+			<span slot="footer" class="dialog-footer">
+				<el-button @click="chartDialog1">返回</el-button>
+			</span>
 		</el-dialog>
 
 		<el-dialog title="预览图" :visible.sync="previewVisible" width="50%">

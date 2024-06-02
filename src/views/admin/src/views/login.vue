@@ -129,7 +129,6 @@ export default {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  // background: url(http://codegen.caihongy.cn/20230929/286f0f899e854f018a0be9e85e43d46d.jpg);
   background: url(https://images.unsplash.com/photo-1679232329246-69b0944201bf?q=80&w=2689&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 	display: flex;
 	width: 100%;

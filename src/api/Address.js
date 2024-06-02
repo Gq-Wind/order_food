@@ -188,9 +188,7 @@ export default ({ config, db }) => {
 
 	// 保存接口（后端）
 	api.post('/save', async (req, res) => {
-
 		try {
-
 			Object.keys(req.body).forEach(item=>{
 				if(req.body[item] == '')  delete req.body[item]
 				if(req.body[item] == '' && item == 'sfsh')  req.body[item] = '待审核'

@@ -69,14 +69,6 @@ export default {
   },
   methods: {
     submitTap() {
-      // if (!this.name) {
-      //   this.$message.error("请输入收款人姓名");
-      //   return;
-      // }
-      // if (!this.account) {
-      //   this.$message.error("请输入收款人账号");
-      //   return;
-      // }
       if (!this.type) {
         this.$message.error("请选择支付方式");
         return;
@@ -152,7 +144,7 @@ export default {
       margin: 20px;
       border: 1px solid #eeeeee;
       padding: 20px;
-	  background: #fff;
+      background: #fff;
     }
   }
   .buton-content {

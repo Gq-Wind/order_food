@@ -45,7 +45,6 @@ export default ({ config, db }) => {
 			}
 			let goodid = req.query.goodid
 			if (goodid) {
-
 				if (goodid.indexOf('%') != -1) {
 					where.goodid = {
 						[Op.like]: goodid
@@ -83,7 +82,6 @@ export default ({ config, db }) => {
 			}
 			let buynumber = req.query.buynumber
 			if (buynumber) {
-
 				if (buynumber.indexOf('%') != -1) {
 					where.buynumber = {
 						[Op.like]: buynumber
@@ -96,7 +94,6 @@ export default ({ config, db }) => {
 			}
 			let price = req.query.price
 			if (price) {
-
 				if (price.indexOf('%') != -1) {
 					where.price = {
 						[Op.like]: price
@@ -109,7 +106,6 @@ export default ({ config, db }) => {
 			}
 			let shangjiazhanghao = req.query.shangjiazhanghao
 			if (shangjiazhanghao) {
-
 				if (shangjiazhanghao.indexOf('%') != -1) {
 					where.shangjiazhanghao = {
 						[Op.like]: shangjiazhanghao
@@ -120,7 +116,7 @@ export default ({ config, db }) => {
 					}
 				}
 			}
-            if (jwt.decode(req.headers.token).role != '管理员' && CartModel.rawAttributes.hasOwnProperty('userid')) {
+        if (jwt.decode(req.headers.token).role != '管理员' && CartModel.rawAttributes.hasOwnProperty('userid')) {
 				where.userid = {
 					[Op.eq]: req.session.userinfo === undefined ? jwt.decode(req.headers.token).id : req.session.userinfo.id
 				}
@@ -163,14 +159,12 @@ export default ({ config, db }) => {
 
 	// 查询单条记录（前端）
 	api.get('/query', async (req, res) => {
-
 		try {
 			const dictionary = {};
 			for (let key in req.query) {
 				dictionary[key] = req.query[key];
 			}
 			let result = await CartModel.findOne({where:dictionary})
-
 			toRes.record(res, 0, result)
 		} catch(err) {
 			res.status(500).render(err)
@@ -228,9 +222,7 @@ export default ({ config, db }) => {
 
 	// 保存接口（后端）
 	api.post('/save', async (req, res) => {
-
 		try {
-
 			Object.keys(req.body).forEach(item=>{
 				if(req.body[item] == '')  delete req.body[item]
 				if(req.body[item] == '' && item == 'sfsh')  req.body[item] = '待审核'
@@ -238,41 +230,28 @@ export default ({ config, db }) => {
 			if (!req.body.userid) {
 				req.body.userid = req.session.userinfo === undefined ? jwt.decode(req.headers.token).id : req.session.userinfo.id
 			}
-
-
-
 			const userinfo = await CartModel.create(req.body)
-
 			if (userinfo === null) {
-
 				toRes.session(res, -1, '添加失败！')
 			} else {
-
 				toRes.session(res, 0, '添加成功！')
 			}
 		} catch(err) {
-
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
 
     // 保存接口（前端）
 	api.post('/add', async (req, res) => {
-
 		try {
-
 			Object.keys(req.body).forEach(item=>{
 				if(req.body[item] == '')  delete req.body[item]
 				if(req.body[item] == '' && item == 'sfsh')  req.body[item] = '待审核'
 			})
-
 			if (jwt.decode(req.headers.token) == null) {
 				toRes.session(res, 401, '请登录后再操作', '', 401)
 			}
-
 			req.body.userid = req.session.userinfo === undefined ? jwt.decode(req.headers.token).id : req.session.userinfo.id
-
-
 			const userinfo = await CartModel.create(req.body)
 
 			if (userinfo === null) {
@@ -521,9 +500,7 @@ export default ({ config, db }) => {
 
 	// 按日期统计
 	api.get('/value/:xColumnName/:yColumnName/:timeStatType', async (req, res) => {
-
 		try {
-
 			let sql = ""
 			let xColumnName = req.params.xColumnName
 			let yColumnName = req.params.yColumnName
@@ -533,7 +510,6 @@ export default ({ config, db }) => {
 			if ("cart" == "orders") {
 				where += " AND status IN ('已支付', '已发货', '已完成') ";
 			}
-
             if (config.dbConnection.dbtype.toLowerCase() == "mysql") {
                 if (timeStatType == "日")
                     sql = "SELECT DATE_FORMAT(" + xColumnName + ", '%Y-%m-%d') " + xColumnName + ", sum(" + yColumnName + ") total FROM " + tableName + where + " GROUP BY DATE_FORMAT(" + xColumnName + ", '%Y-%m-%d')";
@@ -559,20 +535,5 @@ export default ({ config, db }) => {
 			toRes.session(res, 500, '服务器错误！', '', 500)
 		}
 	})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	return api
 }
